@@ -1,10 +1,11 @@
-<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
-  <modelVersion>4.0.0</modelVersion>
-  <groupId>com.njq.nongfadai</groupId>
-  <artifactId>spring-shell-showcase</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
-  
-  <dependencies>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 http://maven.apache.org/xsd/maven-4.0.0.xsd">
+	<modelVersion>4.0.0</modelVersion>
+	<groupId>com.njq.nongfadai</groupId>
+	<artifactId>spring-shell-showcase</artifactId>
+	<version>0.0.1-SNAPSHOT</version>
+
+	<dependencies>
 		<dependency>
 			<groupId>org.springframework.shell</groupId>
 			<artifactId>spring-shell</artifactId>
@@ -39,6 +40,16 @@
 
 	<build>
 		<finalName>spring-shell-showcase</finalName>
+		<resources>
+			<resource>
+				<directory>src/main/resources</directory>
+				<excludes>
+					<exclude>**/*.xml</exclude>
+					<exclude>**/*.properties</exclude>
+				</excludes>
+			</resource>
+		</resources>
+
 		<plugins>
 			<plugin>
 				<groupId>org.apache.maven.plugins</groupId>
@@ -54,6 +65,9 @@
 				<artifactId>maven-jar-plugin</artifactId>
 				<configuration>
 					<archive>
+						<!-- 生成的jar中，不要包含pom.xml和pom.properties这两个文件 -->
+						<addMavenDescriptor>false</addMavenDescriptor>
+
 						<manifest>
 							<addClasspath>true</addClasspath>
 							<mainClass>com.njq.nongfadai.Application</mainClass>

@@ -1,1 +1,0 @@
-java -jar spring-shell-showcase.jar
